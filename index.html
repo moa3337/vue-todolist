@@ -9,9 +9,56 @@
     <title>My ToDo List</title>
 </head>
 <body>
+    <nav class="navbar bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./logo.png" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+    <div id="app">
+        <div class="container">
+
+            <h1 class="fs-2">Add to the List</h1>
+
+            <div class="input-group mb-3">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Recipient's username" 
+                       aria-label="Recipient's username"
+                       aria-describedby="button-addon2"
+                       v-model="newTask"
+                       @keyUp.enter="addTask()"
+                >
+                <button class="btn btn-outline-primary" 
+                        type="button" 
+                        id="button-addon2"
+                        @click="addTask()"
+                >
+                    Aggiungi
+                </button>
+            </div>
+
+            <h2 class="">La mia Lista</h2>
     
+            <ol class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    v-for="(task, index) in tasks"
+                    :key="index"
+                >
+                    {{ task }}
+                    <span class="badge bg-danger rounded-pill"
+                          @click="removeTask(index)"
+                    >
+                        <i class="fa fa-times">X</i>
+                    </span>
+                </li>
+            </ol>
+        </div>
+    </div>
     
-    <script type="text/javascript" src="./js/main.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
