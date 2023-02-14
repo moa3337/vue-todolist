@@ -7,8 +7,14 @@ const app = createApp({
             tasks: [
                 { text: "Imparare a disegnare", done: true },
                 { text: "Creare un art da zero", done: false },
-                { text: "publicare l'art", done: false }
+                { text: "publicare l'art", done: false },
             ],
+
+            newTodo: {
+                text: "",
+                done: false,
+            },
+
             error: false,
         }
     },
@@ -25,6 +31,10 @@ const app = createApp({
         removeTask(i) {
             this.tasks.splice(i, 1);
         },
+
+        doneTodo(todo) {
+            todo.done = !todo.done;
+        }
     },
 });
 
